@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Home = () => {
-    const authInfo = useContext(AuthContext);
-    console.log(authInfo);
+    const authInfon = useContext(AuthContext);
+    console.log(authInfon);
     return (
         <div>
-           <h2>This is Home page for:  {authInfo.name} </h2> 
+           <h2>This is Home page for: </h2> 
+           {/* <p>{authInfo}</p> */}
         </div>
     );
 };

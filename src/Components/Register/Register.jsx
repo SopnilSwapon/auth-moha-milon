@@ -1,14 +1,25 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-
+  const {createUser } = useContext(AuthContext);
+  console.log(createUser);
     const handleRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const email  = e.target.email.value;
         const password  = e.target.password.value;
         console.log(name, email, password);
+        createUser(email, password)
+        .then(result => {
+          console.log(result.user);
+        })
+        .catch(error => {
+          console.log(error.message);
+        })
     }
+    
     return (
         <div>
               <div className="hero bg-gray-200 p-20">
@@ -37,7 +48,7 @@ const Register = () => {
           <input type="password" placeholder="password" name="password" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Register</button>
         </div>
         <div>
             <p>Already have an account ? Please <Link to='/login'><button className="text-green-500 font-bold">Login</button></Link></p>
